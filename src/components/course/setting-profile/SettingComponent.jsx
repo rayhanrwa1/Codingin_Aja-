@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import { app, storage } from "../../../../Database/Firebase/firebaseConfig.dev";
+import {
+  app,
+  storage,
+} from "../../../../Database/Firebase/dist/firebaseConfig.dev";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
