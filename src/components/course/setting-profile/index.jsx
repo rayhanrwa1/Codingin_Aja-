@@ -8,7 +8,7 @@ import Footer from "@/src/layout/footers/footer";
 import SettingComponent from "./SettingComponent"; // Ubah path ke direktori yang benar
 
 // Impor Swal dari SweetAlert
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 const auth = getAuth(app);
 
@@ -60,10 +60,10 @@ const SetProfil = () => {
       Swal.fire({
         title: "Sesi Habis",
         text: "Silakan login kembali!",
-        icon: "question"
+        icon: "question",
       });
       // Redirect ke halaman tertentu setelah logout
-    window.location.href = '/login';
+      window.location.href = "/login";
     } catch (error) {
       console.error("Error logging out:", error);
     }
@@ -78,19 +78,19 @@ const SetProfil = () => {
       footer: '<a href="/panduan">Ketentuan Login</a>',
       allowOutsideClick: false, // User tidak bisa menutup alert dengan mengklik luar area alert
       showConfirmButton: true,
-      confirmButtonColor: '#111F2C',
+      confirmButtonColor: "#111F2C",
       backdrop: true, // Latar belakang menjadi blur
       didOpen: () => {
         // Periksa apakah elemen .swal2-backdrop ada sebelum mengatur gaya
-        const backdrop = document.querySelector('.swal2-backdrop');
+        const backdrop = document.querySelector(".swal2-backdrop");
         if (backdrop) {
-          backdrop.style.backdropFilter = 'blur(100px)'; // Blur dengan tingkat 20px
+          backdrop.style.backdropFilter = "blur(100px)"; // Blur dengan tingkat 20px
         }
       },
       didClose: () => {
         // Redirect ke halaman tertentu ketika alert ditutup
-        window.location.href = '/';
-      }
+        window.location.href = "/";
+      },
     });
   };
 
