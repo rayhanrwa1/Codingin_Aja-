@@ -1,32 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import SEO from "../common/seo";
-import HeaderOne from "../components/homes/home"; // Import HeaderOne
-import HeaderTwo from "../components/homes/home2"; // Import HeaderTwo
+import HeaderOne from "../components/homes/home";
+import HeaderTwo from "../components/homes/home2";
 import Wrapper from "../layout/wrapper";
-import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth'; // Import signOut
-import app from '../../Database/Firebase/firebaseInit';
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "../../Database/Firebase/firebaseInit"; // ✅ Auth langsung dari config
 
 const Home = () => {
   const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    const auth = getAuth(app);
-    let timer; // Timer untuk logout otomatis
+    let timer;
 
     const resetTimer = () => {
       clearTimeout(timer);
       timer = setTimeout(() => {
         handleLogout();
-      }, 60 * 1000); // Waktu dalam milidetik (5 menit)
+      }, 60 * 1000); // 1 menit
     };
 
     const handleLogout = async () => {
       try {
         await signOut(auth);
         setIsLoggedIn(false);
-        router.push("/login"); // Redirect ke halaman login setelah logout
+        router.push("/login");
       } catch (error) {
         console.error("Error logging out:", error);
       }
@@ -35,14 +34,13 @@ const Home = () => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setIsLoggedIn(true);
-        resetTimer(); // Reset timer setiap kali ada aktivitas
+        resetTimer();
       } else {
         setIsLoggedIn(false);
-        clearTimeout(timer); // Bersihkan timer jika user tidak login
+        clearTimeout(timer);
       }
     });
 
-    // Panggil resetTimer setiap kali ada aktivitas
     window.addEventListener("mousemove", resetTimer);
     window.addEventListener("keypress", resetTimer);
 

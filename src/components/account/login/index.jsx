@@ -5,11 +5,11 @@ import Breadcrumb from "@/src/common/breadcrumbs/breadcrumb_3";
 import Login from "./login";
 import Footer from "@/src/layout/footers/footer";
 import HeaderTwo from "@/src/layout/headers/header_2";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
 const auth = getAuth(app);
 
-const Faq = () => {
+const LoginIndex = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [checkingLogin, setCheckingLogin] = useState(true);
   const router = useRouter();
@@ -20,7 +20,7 @@ const Faq = () => {
         if (user.emailVerified) {
           setLoggedIn(true);
           setCheckingLogin(false);
-          router.push('/');
+          router.push("/");
         } else {
           setLoggedIn(false);
           setCheckingLogin(false);
@@ -48,4 +48,4 @@ const Faq = () => {
   );
 };
 
-export default Faq;
+export default LoginIndex;

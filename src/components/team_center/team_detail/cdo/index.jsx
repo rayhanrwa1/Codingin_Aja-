@@ -4,7 +4,6 @@ import HeaderOne from "@/src/layout/headers/header";
 import HeaderTwo from "@/src/layout/headers/header_3_user";
 import TeamDetailsArea from "./team-details-area";
 import Footer from "@/src/layout/footers/footer";
-import firebase from "firebase/app";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { app } from "../../../../../Database/Firebase/firebaseInit";
 
@@ -42,9 +41,9 @@ const TeamDetails = () => {
         Swal.fire({
           title: "Sesi Habis",
           text: "Silakan login kembali!",
-          icon: "question"
+          icon: "question",
         });
-        window.location.href = '/login';
+        window.location.href = "/login";
       } catch (error) {
         console.error("Error logging out:", error);
       }
@@ -58,14 +57,14 @@ const TeamDetails = () => {
         footer: '<a href="/panduan">Ketentuan Login!</a>',
         allowOutsideClick: false,
         showConfirmButton: true,
-        confirmButtonColor: '#111F2C',
+        confirmButtonColor: "#111F2C",
         didOpen: () => {
-          document.body.classList.add('blur');
+          document.body.classList.add("blur");
         },
         willClose: () => {
-          document.body.classList.remove('blur');
-          window.location.href = '/';
-        }
+          document.body.classList.remove("blur");
+          window.location.href = "/";
+        },
       });
     };
 

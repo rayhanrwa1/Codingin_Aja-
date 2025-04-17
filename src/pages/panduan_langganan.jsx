@@ -1,7 +1,7 @@
 import React from "react";
 import Wrapper from "../layout/wrapper";
 import SEO from "../common/seo";
-import Blog from "../components/panduan/panduan copy";
+import Blog from "../components/panduan/panduan";
 
 const index = () => {
   return (

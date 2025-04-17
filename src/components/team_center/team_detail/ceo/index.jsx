@@ -42,31 +42,12 @@ const TeamDetails = () => {
         Swal.fire({
           title: "Sesi Habis",
           text: "Silakan login kembali!",
-          icon: "question"
+          icon: "question",
         });
-        window.location.href = '/login';
+        window.location.href = "/login";
       } catch (error) {
         console.error("Error logging out:", error);
       }
-    };
-
-    const showLoginAlert = () => {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Akses Dibatasi!!",
-        footer: '<a href="/panduan">Ketentuan Login!</a>',
-        allowOutsideClick: false,
-        showConfirmButton: true,
-        confirmButtonColor: '#111F2C',
-        didOpen: () => {
-          document.body.classList.add('blur');
-        },
-        willClose: () => {
-          document.body.classList.remove('blur');
-          window.location.href = '/';
-        }
-      });
     };
 
     window.addEventListener("mousemove", resetTimer);
@@ -83,7 +64,10 @@ const TeamDetails = () => {
     <>
       {loggedIn ? <HeaderTwo /> : <HeaderOne />}
       <main>
-        <Breadcrumb title="Rayhan Rizky Widi Ananta" innertitle="Rayhan Rizky" />
+        <Breadcrumb
+          title="Rayhan Rizky Widi Ananta"
+          innertitle="Rayhan Rizky"
+        />
         <TeamDetailsArea />
       </main>
       <Footer />
